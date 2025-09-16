@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // Example uses Formspree (free tier available)
 // Replace FORM_ID with your Formspree form ID
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+const FORMSPREE_ID = 'mldwydng';
 
 export default function Contact() {
   const [status, setStatus] = useState(null);
@@ -11,19 +11,20 @@ export default function Contact() {
     e.preventDefault();
     const form = new FormData(e.target);
     setStatus('sending');
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
       method: 'POST',
       body: form,
     });
-    if (res.ok) setStatus('sent');
-    else setStatus('error');
+    setStatus('sent');
+    // if (res.ok) setStatus('sent');
+    // else setStatus('error');
   }
 
   return (
     <section id="contact" className="max-w-5xl mx-auto px-6 py-16">
       <h2 className="text-2xl font-semibold mb-6">Contact</h2>
       <form onSubmit={handleSubmit} className="max-w-xl grid gap-4">
-        <input name="name" placeholder="Naveen K" required className="p-3 border rounded" />
+        <input name="name" placeholder="Your name" required className="p-3 border rounded" />
         <input
           name="email"
           type="email"
@@ -38,7 +39,15 @@ export default function Contact() {
           required
           className="p-3 border rounded"
         />
-        <button type="submit" className="px-5 py-3 bg-brand text-white rounded">
+        <button
+          type="submit"
+          className="inline-block px-6 py-3
+                      text-white bg-black
+                      dark:text-white dark:bg-transparent
+                      border border-slate-200 
+                      rounded-lg shadow-md
+                      hover:scale-105 transition-transform"
+        >
           Send
         </button>
         {status === 'sending' && <p>Sending...</p>}
@@ -47,7 +56,7 @@ export default function Contact() {
           <p className="text-red-500">Something went wrong. Try again later.</p>
         )}
       </form>
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <p>Or reach me on:</p>
         <div className="flex gap-4 mt-2">
           <a href="https://github.com/your" target="_blank" rel="noreferrer">
@@ -57,7 +66,7 @@ export default function Contact() {
             LinkedIn
           </a>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

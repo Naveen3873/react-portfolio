@@ -16,7 +16,7 @@ return (
 <Hero />
 <About />
 <Skills />
-<Projects />
+{/* <Projects /> */}
 <Contact />
 </main>
 <Footer />
