@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import profile from '../assets/profile.jpeg'
+import { motion } from 'framer-motion';
+import profile from '../assets/profile.jpeg';
 
 export default function Hero() {
   return (
@@ -61,5 +61,5 @@ export default function Hero() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

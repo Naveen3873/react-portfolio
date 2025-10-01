@@ -15,58 +15,51 @@ export default function Contact() {
       method: 'POST',
       body: form,
     });
+    console.log("form",form)
     setStatus('sent');
     // if (res.ok) setStatus('sent');
     // else setStatus('error');
   }
 
   return (
-    <section id="contact" className="max-w-5xl mx-auto px-6 py-16">
-      <h2 className="text-2xl font-semibold mb-6">Contact</h2>
-      <form onSubmit={handleSubmit} className="max-w-xl grid gap-4">
-        <input name="name" placeholder="Your name" required className="p-3 border rounded" />
-        <input
-          name="email"
-          type="email"
-          placeholder="Your email"
-          required
-          className="p-3 border rounded"
-        />
-        <textarea
-          name="message"
-          rows="6"
-          placeholder="Message"
-          required
-          className="p-3 border rounded"
-        />
-        <button
-          type="submit"
-          className="inline-block px-6 py-3
-                      text-white bg-black
-                      dark:text-white dark:bg-transparent
-                      border border-slate-200 
-                      rounded-lg shadow-md
-                      hover:scale-105 transition-transform"
-        >
-          Send
-        </button>
-        {status === 'sending' && <p>Sending...</p>}
-        {status === 'sent' && <p className="text-green-500">Message sent — thank you!</p>}
-        {status === 'error' && (
-          <p className="text-red-500">Something went wrong. Try again later.</p>
-        )}
-      </form>
-      {/* <div className="mt-8">
-        <p>Or reach me on:</p>
-        <div className="flex gap-4 mt-2">
-          <a href="https://github.com/your" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href="https://linkedin.com/in/your" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-        </div>
-      </div> */}
+    <section
+      id="contact"
+      className="w-full min-h-screen flex items-center justify-center px-6 py-16 bg-white dark:bg-black"
+    >
+      <div className="max-w-2xl w-full">
+        <h2 className="text-2xl font-semibold mb-6 text-center">Get In Touch</h2>
+        <h6 className="font-semibold mb-6 text-center">
+          Have a project in mind? Let's discuss how we can work together to bring your ideas to life.
+        </h6>
+        <form onSubmit={handleSubmit} className="grid gap-4">
+          <input name="name" placeholder="Name" required className="p-3 border rounded" />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            className="p-3 border rounded"
+          />
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Message"
+            required
+            className="p-3 border rounded"
+          />
+          <button
+            type="submit"
+            className="inline-block px-6 py-3 text-white bg-black dark:text-white dark:bg-transparent border border-slate-200 rounded-lg shadow-md hover:scale-105 transition-transform"
+          >
+            Send Message
+          </button>
+          {status === 'sending' && <p>Sending...</p>}
+          {status === 'sent' && <p className="text-green-500">Message sent — thank you!</p>}
+          {status === 'error' && (
+            <p className="text-red-500">Something went wrong. Try again later.</p>
+          )}
+        </form>
+      </div>
     </section>
   );
 }
